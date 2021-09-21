@@ -1,0 +1,10 @@
+<% @upload.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, crop: :thumb,
+                    gravity: :face,
+                    height: 64,
+                    width: 64,
+                    effect: :grayscale  %>
+  <% @upload.emotions[photo.blob_id.to_s].each do |emotion, percentage| %>
+    <p><strong><%= emotion %> </strong>: <%= number_to_percentage(percentage * 100, precision: 10) %> </p>
+<% end %>
+<% end %>
