@@ -25,7 +25,6 @@ class GenerateEmotionsService
   def prepare_image(img)
     img.resize "64x64^", "-gravity", "center", "-extent", "64x64"
     img.colorspace "Gray"
-    # img.write("resized.jpg")
     img
   end
 

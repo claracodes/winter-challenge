@@ -1,7 +1,7 @@
-<% @uploads.each do |upload| %>
-<% upload.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-<% end %>
-
-
+<div class="all-images">
+  <% @uploads.each do |upload| %>
+    <% upload.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 250, width: 320, crop: :fill, class: "mb-2" %>
+    <% end %>
+  <% end %>
+</div>
