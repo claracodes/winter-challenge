@@ -1,9 +1,13 @@
-<h1>Uploads#new</h1>
-<p>Find me in app/views/uploads/new.html.erb</p>
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+    <div class="p-4 mb-2 bg-light border rounded border-success">
+    <h2>Upload</h2>
+    <p>Upload one or multiple photos</p>
 
-<%= simple_form_for(@upload) do |f| %>
-  <!-- [...] -->
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <!-- [...] -->
-  <%= f.submit %>
-<% end %>
+    <%= simple_form_for(@upload) do |f| %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+      <%= f.submit "Upload", class: "btn btn-block btn-success" %>
+    <% end %>
+</div>
+</div>
+</div>

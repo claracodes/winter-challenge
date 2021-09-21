@@ -2,9 +2,7 @@
 <p>Find me in app/views/uploads/new.html.erb</p>
 
 <%= simple_form_for(@ml_model) do |f| %>
-  <!-- [...] -->
   <%= f.input :name, required: true %>
   <%= f.input :model, as: :file%>
-  <!-- [...] -->
   <%= f.submit %>
 <% end %>
