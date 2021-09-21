@@ -1,4 +1,7 @@
 <div class="all-images">
+  <% if @uploads.empty? %>
+    <p class="text-muted">Nothing here yet, <u><%= link_to "upload images now", new_upload_path, class: "text-muted" %></u></p>
+  <% end %>
   <% @uploads.each do |upload| %>
     <% upload.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 250, width: 320, crop: :fill, class: "mb-2" %>

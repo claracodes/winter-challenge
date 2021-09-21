@@ -1,18 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 require "open-uri"
-
-# link to dataset = 'https://github.com/onnx/models/blob/master/vision/body_analysis/emotion_ferplus/model/emotion-ferplus-8.onnx'
-data_set = File.open(Rails.root + "spec/fixtures/model.onnx")
-ml_model = MlModel.new(name: "Face Emotions")
-ml_model.model.attach(io: data_set, filename: "Face Emotion Data Model")
-ml_model.save
 
 links = [
   'https://images.unsplash.com/photo-1541112324160-e8a425b58dac?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZmVhciUyMGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
@@ -22,6 +8,7 @@ links = [
   'https://images.unsplash.com/photo-1601412436967-8b2d90944ded?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2FkJTIwZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   'https://images.unsplash.com/photo-1568914882731-5bf24aa2a994?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bmV1dHJhbCUyMGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
 ]
+
 upload = Upload.new(name: 'From seeds')
 links.each_with_index do |link, index|
   file = URI.open(link)
