@@ -8,8 +8,8 @@
 
 require "open-uri"
 
-data_set_link = 'https://github.com/onnx/models/blob/master/vision/body_analysis/emotion_ferplus/model/emotion-ferplus-8.onnx'
-data_set = URI.open(data_set_link)
+# link to dataset = 'https://github.com/onnx/models/blob/master/vision/body_analysis/emotion_ferplus/model/emotion-ferplus-8.onnx'
+data_set = File.open(Rails.root + "spec/fixtures/model.onnx")
 ml_model = MlModel.new(name: "Face Emotions")
 ml_model.model.attach(io: data_set, filename: "Face Emotion Data Model")
 ml_model.save

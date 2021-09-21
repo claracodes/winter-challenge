@@ -6,7 +6,7 @@
 
       <%= simple_form_for(@upload) do |f| %>
         <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
-        <%= f.submit "Upload", class: "btn btn-block btn-success" %>
+        <%= f.submit "Upload!", class: "btn btn-block btn-success" %>
       <% end %>
     </div>
   </div>

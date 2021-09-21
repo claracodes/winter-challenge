@@ -34,7 +34,7 @@ class GenerateEmotionsService
   end
 
   def run_predictions(pixels)
-    model = OnnxRuntime::Model.new(MlModel.first.model.download)
+    model = OnnxRuntime::Model.new(File.open(Rails.root + "spec/fixtures/model.onnx"))
     model.predict("Input3" => pixels)
   end
 

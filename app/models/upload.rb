@@ -1,6 +1,5 @@
 class Upload < ApplicationRecord
   has_many_attached :photos, service: :cloudinary
-  # after_save :add_emotions_to_photos
 
   def add_emotions_to_photos
     self.emotions = {} if self.emotions.nil?
