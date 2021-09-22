@@ -1,5 +1,6 @@
 class Upload < ApplicationRecord
   has_many_attached :photos, service: :cloudinary
+  validate :photo_validation
 
   EMOTIONS = [
     "neutral", "happiness", "surprise", "sadness",
@@ -15,6 +16,20 @@ class Upload < ApplicationRecord
       photo.emotion = all_emotions.first.first
       photo.save
       self.save
+    end
+  end
+
+  def photo_validation
+    if photos.attached?
+      photos.each do |photo|
+        if photo.blob.byte_size >  10_485_760
+          name = photo.blob.filename
+          errors[:base] << "#{name} is too big"
+        elsif !photo.blob.content_type.starts_with?('image/')
+          name = photo.blob.filename
+          errors[:base] << "#{name} has wrong format, only images"
+        end
+      end
     end
   end
 end

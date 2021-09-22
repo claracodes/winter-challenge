@@ -3,6 +3,13 @@
     <div class="p-4 mb-2 bg-light border rounded border-success">
       <h2>Upload</h2>
       <p>Upload one or multiple photos</p>
+      <% if @upload.errors.messages[:base].present? %>
+        <% @upload.errors.messages[:base].each do |message| %>
+          <p class="text-danger">
+          <%= message %>
+          </p>
+        <% end %>
+      <% end %>
 
       <%= simple_form_for(@upload) do |f| %>
         <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
