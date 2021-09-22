@@ -1,6 +1,10 @@
 class UploadsController < ApplicationController
   def index
-    @uploads = Upload.all
+    if params[:filter]
+      @photos = ActiveStorage::Attachment.where(name: "photos", emotion: params[:filter]).distinct
+    else
+      @photos = ActiveStorage::Attachment.where(name: "photos").distinct
+    end
   end
 
   def new
@@ -8,6 +12,12 @@ class UploadsController < ApplicationController
   end
 
   def create
+    if params[:upload].nil?
+      @upload = Upload.new
+      flash[:alert] = "Please select at least one image"
+      render :new && return
+    end
+
     @upload = Upload.new(upload_params)
     if @upload.save
       redirect_to emotion_upload_path(@upload)

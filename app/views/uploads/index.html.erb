@@ -1,10 +1,16 @@
 <div class="all-images">
-  <% if @uploads.empty? %>
-    <p class="text-muted">Nothing here yet, <u><%= link_to "upload images now", new_upload_path, class: "text-muted" %></u></p>
-  <% end %>
-  <% @uploads.each do |upload| %>
-    <% upload.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 250, width: 320, crop: :fill, class: "mb-2" %>
+   <p>Filter by emotion:</p>
+   <div class="d-flex justify-content-start align-items-end mb-3 mt-2">
+    <% Upload::EMOTIONS.each do |emotion| %>
+    <%= link_to emotion.capitalize, uploads_path(filter: emotion), class: "mr-3 btn btn-sm #{ params[:filter] == emotion ? 'btn-success' : 'btn-outline-success' }" %>
     <% end %>
+    <%= link_to "All images", uploads_path, class: 'text-muted' %>
+  </div>
+   <% if @photos.empty? %>
+    <p class="text-muted">Nothing here yet, <u><%= link_to "upload images now", new_upload_path, class: "text-muted" %></u></p>
+  <% else %>
+  <% @photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 250, width: 320, crop: :fill, class: "mb-2" %>
+  <% end %>
   <% end %>
 </div>

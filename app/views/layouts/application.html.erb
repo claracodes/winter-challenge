@@ -14,6 +14,8 @@
   <body>
       <%= render 'shared/navbar' %>
      <div class="<%= 'container' unless current_page?(uploads_path) %>">
+      <%= render 'shared/alerts' %>
+
       <%= yield %>
      </div>
   </body>

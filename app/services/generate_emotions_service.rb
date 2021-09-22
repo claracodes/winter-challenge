@@ -39,10 +39,7 @@ class GenerateEmotionsService
   end
 
   def create_readable_hash(probabilities)
-    emotion_labels = [
-      "neutral", "happiness", "surprise", "sadness",
-      "anger", "disgust", "fear", "contempt"
-    ]
+    emotion_labels = Upload::EMOTIONS
     emotion_labels.zip(probabilities).sort_by { |_, v| -v.round(5) }.to_h
   end
 
