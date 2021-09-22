@@ -6,6 +6,9 @@
       <% if @upload.errors.messages[:base].present? %>
         <% @upload.errors.messages[:base].each do |message| %>
           <p class="text-danger">
+          Upload failed!
+          </p>
+          <p class="text-danger">
           <%= message %>
           </p>
         <% end %>
