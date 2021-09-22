@@ -1,6 +1,6 @@
 # Image repository with emotion detection for faces
 
-This is a image repository with emotion detection for faces. After uploading one or multiple images, a pretrained model will be run over the faces detected in those images. Afterwards you can see the result.
+This is a image repository with emotion detection for faces. After uploading one or multiple images, we're making use of a [pretrained model](https://github.com/onnx/models/tree/master/vision/body_analysis/emotion_ferplus) that will run over the faces detected in those images. The face detection is done via Cloudinary which is also the store for the photos. After uploading your images you can see the results and filter all uploaded images by emotions.
 
 This Rails app is online and can be viewed [here](https://winter-challenge-clara.herokuapp.com/) or it can be locally launched by cloning the project and running the following commands:
 
