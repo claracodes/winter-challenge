@@ -28,3 +28,6 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+import { previewImageOnFileSelect } from '../components/photo_preview.js';
+previewImageOnFileSelect();

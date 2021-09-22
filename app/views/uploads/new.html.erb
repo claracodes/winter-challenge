@@ -12,9 +12,17 @@
       <% end %>
 
       <%= simple_form_for(@upload) do |f| %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+        <%= f.input :photos, as: :file,
+                             input_html: { multiple: true, class: 'd-none', id: 'photo-input' },
+                             label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
         <%= f.submit "Upload!", class: "btn btn-block btn-success" %>
       <% end %>
+
     </div>
+  </div>
+   <div class="col-md-6 col-sm-12">
+      <div class="d-none p-4 mb-2 bg-light border rounded border-success" id="preview">
+        <h3>Preview</h3>
+      </div>
   </div>
 </div>
