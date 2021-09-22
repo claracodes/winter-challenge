@@ -12,6 +12,4 @@ Rails.application.routes.draw do
       get 'emotion'
     end
   end
-
-  resources :ml_models, only: [:new, :create]
 end
